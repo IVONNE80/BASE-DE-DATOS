@@ -1,0 +1,11 @@
+describe clientes;
+describe compras;
+describe productos;
+describe proveedores;
+show tables;
+insert into clientes values("HEBI801019MOC", "Ivonne", "Hernadez", "cda. Manzano", "1980-10-19");
+select * from clientes;
+insert into clientes values("MALU560811TVC", "Maria", "Bautista", "cda. Dalia", "1956-08-11");
+select * from clientes;
+insert into proveedores values ("CLAU750117HEB","Toys", "Calle Avellanas");
+insert into productos values (15, "vaso", 20, "ANTO760119BAU");
