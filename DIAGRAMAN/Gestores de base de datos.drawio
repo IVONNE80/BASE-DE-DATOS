@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-05T16:43:18.950Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="3TER31mt2fYuWYMAxtcg" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-05T16:45:44.276Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="8s4r3j8tBJ1h90rXRvVD" version="20.4.0" type="github">
   <diagram id="q8xmXXXaX6RDKj1XC6pM" name="Página-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -86,7 +86,7 @@
           <mxGeometry x="40" y="40" width="290" height="100" as="geometry" />
         </mxCell>
         <mxCell id="FfVpBlafb4usRdiCoWYt-4" value="https://app.diagrams.net/#HIVONNE80%2FBASE-DE-DATOS%2Fmain%2FDIAGRAMAN%2FGestores%20de%20base%20de%20datos.drawio" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="110" y="10" width="790" height="50" as="geometry" />
+          <mxGeometry x="30" width="790" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
