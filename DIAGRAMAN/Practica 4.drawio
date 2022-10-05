@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-10-05T16:21:27.825Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="NIGUF8AvMMmG3gqICQIv" version="20.3.6" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-10-05T16:22:45.671Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="gsnPr1R5pHqw3ZJapUbz" version="20.3.6" type="github" pages="2">
   <diagram id="9ibJy7TVjB15K4Lmft1s" name="Página-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="L-MqwaFZbTVjXF8py1bF-2" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="40" y="370" width="960" height="430" as="geometry" />
+          <mxGeometry x="40" y="240" width="960" height="430" as="geometry" />
         </mxCell>
         <mxCell id="L-MqwaFZbTVjXF8py1bF-3" value="HECHOS" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" vertex="1" parent="L-MqwaFZbTVjXF8py1bF-2">
           <mxGeometry x="373.3333333333333" y="96.62921348314609" width="213.33333333333331" height="243.4157303370787" as="geometry" />
@@ -101,7 +101,7 @@
           <mxGeometry y="98.47191011235957" width="213.33333333333331" height="36.23595505617978" as="geometry" />
         </mxCell>
         <mxCell id="idi_wTjxyO-uuERL-XuU-1" value="TALLER: BASE DE DATOS&lt;br/&gt;&lt;br&gt;PRÁCTICA: 4&lt;br&gt;NOMBRE: IVONNE HERNÁNDEZ BAUTISTA&lt;br/&gt;&lt;br&gt;FOLIO: 15416TV14&lt;br/&gt;&lt;br&gt;FECHA: 5/10/22" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="130" width="290" height="140" as="geometry" />
+          <mxGeometry x="40" y="80" width="290" height="140" as="geometry" />
         </mxCell>
         <mxCell id="idi_wTjxyO-uuERL-XuU-2" value="https://app.diagrams.net/#HIVONNE80%2FBASE-DE-DATOS%2Fmain%2FDIAGRAMAN%2FPractica%204.drawio" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="240" y="40" width="720" height="50" as="geometry" />
@@ -115,7 +115,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="GGBiILvX3UtR-TjB2vxj-1" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="10" y="280" width="1120" height="436" as="geometry" />
+          <mxGeometry x="25" y="160" width="1120" height="436" as="geometry" />
         </mxCell>
         <mxCell id="GGBiILvX3UtR-TjB2vxj-2" value="HECHOS" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" vertex="1" parent="GGBiILvX3UtR-TjB2vxj-1">
           <mxGeometry x="494.11764705882354" y="129.2490118577075" width="131.76470588235296" height="181.09881422924903" as="geometry" />
