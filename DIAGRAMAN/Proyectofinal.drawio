@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-12T04:27:28.698Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="Aih3WXPnWXaxu_0fNAuH" version="20.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-12T04:28:29.575Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="luwT3bHjYIp65Tka8qbs" version="20.3.7" type="github">
   <diagram id="C_52Ca0h4Aw3n_u4SL9l" name="Página-1">
     <mxGraphModel dx="1038" dy="539" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -52,7 +52,7 @@
         <mxCell id="GZpbhepSpUe1rYxqUkZz-16" value="suministrar" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="400" y="270" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GZpbhepSpUe1rYxqUkZz-18" value="pertenecer" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="GZpbhepSpUe1rYxqUkZz-18" value="pertenece" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="140" y="480" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
