@@ -187,41 +187,178 @@ FROM dept left join emp
 on dept.deptno = emp.deptno
 group by dept.deptno;
 -- 3. Mostrar el salario máximo, el salario mínimo y el salario promedio de los empleados de cada departamento. El resultado tiene que mostrar el nombre del departamento.
-SELECT AVG(sal),MIN(sal),MAX(sal)
-FROM emp;
 SELECT dept.dname , AVG(sal),MIN(sal),MAX(sal)
-FROM dept left join emp
+FROM dept  join emp
 on dept.deptno = emp.deptno
-group by dept.deptno;
+group by emp.deptno;
 -- 4. Mostrar el cada cargo (job), junto con el salario máximo, mínimo y el número total de empleados que ganan menos de $1100.
-SELECT emp.job , MIN(sal),MAX(sal), count(job)
-FROM emp; 
+SELECT emp.job , MIN(sal),MAX(sal), count(job), avg (sal)
+FROM emp
+group by job
+having avg (sal) < 1100;
 -- 5. Lista los nombres y el salario de todos los empleados.
 SELECT emp.ename  as ename , emp.sal as sal
 FROM emp;
 -- 6. Lista todas las columnas de la tabla emp.
 SELECT * FROM emp;
 -- 7. Muestra una lista con el nombre del empleado, salario y nombre del departamento al que pertenece.
-SELECT emp.ename  as ename , emp.sal as sal , dept.dname as dname
-FROM emp  left join dept 
-on emp.deptno = dept.deptno  
-group by emp.deptno;
+SELECT emp.ename  as nombre , emp.sal as salario , dept.dname as departamento
+FROM emp  join dept 
+on emp.deptno = dept.deptno;  
 -- 8. Listar todos los empleados que tienen el cargo “ANALYST”
-SELECT ename  
+SELECT *  
 from emp
 WHERE job = 'analyst'; 
 -- 9. Devuelve todos los empleados del departamento “SALES”
-SELECT ename
+SELECT *
 from emp
 join dept 
 on emp.deptno = dept.deptno
 where dept.dname = 'sales';
--- 10. Muestra quién gana más en el departamento “ACCOUNTING”.
-SELECT sal 
+SELECT *
 from emp
-join dept 
-on emp.deptno = dept.deptno
-where dept.dname > 'accounting';
+where deptno = (SELECT deptno FROM dept WHERE dname ='sales');
+-- 10. Muestra quién gana más en el departamento “ACCOUNTING”.
+SELECT ename, sal
+FROM emp
+WHERE sal = (
+SELECT max(sal) FROM emp WHERE deptno=
+( SELECT deptno FROM DEPT where DNAME = 'accounting') 
+);
+/* 11. Crear 5 disparadores:
+emp_verifica_salario_BI
+Si el salario es negativo se guarda como 0.
+Si el departamento es negativo se guarda como 10.
+emp_verifica_salario_BU
+Si el salario es negativo se guarda como 0.
+Si el departamento es negativo se guarda como 10.
+dept_registro_AI
+Cuando se realice un registro, que guarde en una tabla reg_dept_insert la fecha, usuario y el nuevo registro
+dept_registro_BU
+Cuando se actualice un registro, que guarde en una tabla reg_dept_update la fecha, usuario, el viejo registro y el nuevo registro
+dept_registro_AD
+Cuando se elimine un registro, que guarde en una tabla reg_dept_delete la fecha, usuario y el registro que se eliminó.
+*/
+/*
+dept_registro_AI
+Cuando se realice un registro, que guarde en una tabla reg_dept_insert la fecha,
+usuario y el nuevo registro
+*/
+-- SELECT * FROM dept;
+-- SELECT * FROM reg_dept_d;
+
+CREATE TABLE reg_dept_i(
+fecha datetime,
+usuario VARCHAR(50),
+deptno NUMERIC(2),
+dname VARCHAR(12),
+loc VARCHAR(11));
 
 
-   
+CREATE TRIGGER dept_registro_AI AFTER INSERT ON dept
+FOR EACH ROW
+INSERT INTO reg_dept_i
+VALUES(
+current_timestamp(),
+current_user(),
+NEW.deptno,
+NEW.dname,
+NEW.loc);
+
+/*
+dept_registro_BU
+Cuando se actualice un registro, que guarde en una tabla reg_dept_update la fecha,
+usuario, el viejo registro y el nuevo registro
+*/
+
+CREATE TABLE reg_dept_u(
+fecha datetime,
+usuario VARCHAR(50),
+old_deptno NUMERIC(2),
+old_dname VARCHAR(12),
+old_loc VARCHAR(11),
+deptno NUMERIC(2),
+dname VARCHAR(12),
+loc VARCHAR(11));
+
+CREATE TRIGGER dept_registro_BU BEFORE UPDATE ON dept
+FOR EACH ROW
+INSERT INTO reg_dept_u
+VALUES(
+current_timestamp(),
+current_user(),
+OLD.deptno,
+OLD.dname,
+OLD.loc,
+NEW.deptno,
+NEW.dname,
+NEW.loc);
+
+-- UPDATE dept SET dname = "Contabilidad" WHERE deptno = 10;
+
+/*
+dept_registro_AD
+Cuando se elimine un registro, que guarde en una tabla reg_dept_delete la fecha, usuario y el registro que se eliminó.
+*/
+CREATE TABLE reg_dept_d(
+fecha datetime,
+usuario VARCHAR(50),
+deptno NUMERIC(2),
+dname VARCHAR(12),
+loc VARCHAR(11));
+
+CREATE TRIGGER dept_registro_AD BEFORE DELETE ON dept
+FOR EACH ROW
+INSERT INTO reg_dept_d
+VALUES(
+current_timestamp(),
+current_user(),
+OLD.deptno,
+OLD.dname,
+OLD.loc);
+
+-- DROP TRIGGER dept_registro_AD;
+-- DELETE FROM dept WHERE deptno = 20;
+/*
+emp_verifica_salario_BI
+	Si el salario es negativo se guarda como 0.
+	Si el departamento es negativo se guarda como 10.
+*/
+DELIMITER $$
+CREATE TRIGGER emp_verifica_salario_BI BEFORE INSERT ON emp
+FOR EACH ROW
+BEGIN
+	IF NEW.sal < 0 THEN
+		SET NEW.sal = 0;
+	END IF;
+    IF NEW.sal >= 5000 THEN
+		SET NEW.sal = 4999;
+	END IF;
+    IF NEW.deptno < 10 THEN
+		SET NEW.deptno = 40;
+	END IF;
+END;$$
+
+/*
+* emp_verifica_salario_BU
+    Si el salario es negativo se guarda como 0.
+    Si el departamento es negativo se guarda como 10.
+*/
+
+DELIMITER $$
+CREATE TRIGGER emp_verifica_salario_BU BEFORE UPDATE ON emp
+FOR EACH ROW
+BEGIN
+	IF NEW.sal < 0 THEN
+		SET NEW.sal = 0;
+	END IF;
+    IF NEW.sal >= 5000 THEN
+		SET NEW.sal = 4999;
+	END IF;
+    IF NEW.deptno < 10 THEN
+		SET NEW.deptno = 40;
+	END IF;
+END;$$
+
+-- SELECT * FROM emp;
+-- UPDATE emp SET deptno = 0 WHERE empno = 7934;

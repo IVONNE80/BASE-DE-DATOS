@@ -1,5 +1,5 @@
 -- TALLER: BASE DE DATOS
--- PRACTICA:7
+-- PRACTICA:9
 -- NOMBRE:IVONNE HERNANDEZ BAUTISTA
 -- FOLIO:15416TV14
 -- FECHA:05/10/22
@@ -110,43 +110,32 @@ select * from Fabricantes;
 -- Muestra la tabla de productos con sus atributos
 select * from Productos;
 -- ---------------------------------------------------------------------------
--- PRACTICA 7
+-- PRACTICA 9
 -- ---------------------------------------------------------------------------
--- Calcula el número total de productos que hay en la tabla productos.
-SELECT COUNT(nombre) AS TotalProductos FROM Productos;
-/*
-Muestra el número total de productos que tiene cada uno de los fabricantes. 
-El listado también debe incluir los fabricantes que no tienen ningún producto. 
-El resultado mostrará dos columnas, una con el nombre del fabricante y otra con el número deproductos que tiene. 
-Ordene el resultado descendentemente por el número deproductos.
-*/
-SELECT Fabricantes.nombre , count(Productos.nombre)
-FROM Fabricantes left join Productos
-on Fabricantes.idCodigo = Productos.idCodigo
-group by Productos.Fabricantes_idCodigo
-order by Productos.nombre desc;
-/*
-Muestra el precio máximo, precio mínimo y precio promedio de los productos de cada uno de los fabricantes. 
-El resultado mostrará el nombre del fabricante junto con los datos que se solicitan.
-*/
-SELECT Fabricantes.nombre , AVG(precio),MIN(precio),MAX(precio)
-FROM Fabricantes left join Productos
-on Fabricantes.idCodigo = Productos.idCodigo
-group by Fabricantes.idCodigo;
-/*
-Muestra el nombre de cada fabricante, junto con el precio máximo, precio mínimo,precio medio y 
-el número total de productos de los fabricantes que tienen un preciomedio superior a $200. 
-Es necesario mostrar el nombre del fabricante.
-*/
-SELECT Fabricantes.nombre , AVG(precio),MIN(precio),MAX(precio)
-FROM Fabricantes left join Productos
-on Fabricantes.idCodigo = Productos.idCodigo
-where Productos.precio > 200
-group by Fabricantes.idCodigo;
-SELECT Fabricantes as nombre, min(precio) as salario_min, max(precio) as salario_max, avg(precio)
-FROM Fabricantes
-GROUP BY Fabricantes
-HAVING avg(sal) > 200;
+-- 1. Lista el nombre de todos los productos que hay en la tabla producto.
+select productos.nombre as nombre_productos
+ from Productos;
+-- 2.Lista los nombres y los precios de todos los productos de la tabla producto.
+select productos.nombre as nombre_productos , productos.precio as precio
+ from Productos;
+-- 3. Lista todas las columnas de la tabla producto.
+select * from Productos;
+-- 4. Devuelve una lista con el nombre del producto, precio y nombre de fabricante de todos los productos de la base de datos.
+SELECT Productos.nombre as nombre, Productos.precio as precio , Fabricantes.nombre as nombre
+FROM Productos join Fabricantes
+ON Productos.idCodigo = Fabricantes.idCodigo;
+
+-- Subconsultas (En la cláusula WHERE)
+-- 1. Devuelve todos los productos del fabricante Lenovo. (Sin utilizar INNER JOIN).
+
+SELECT * FROM Productos 
+WHERE fabricantes_idCodigo=( SELECT idCodigo FROM fabricantes WHERE nombre='Lenovo');
+
+-- 2. Devuelve todos los datos de los productos que tienen el mismo precio que el producto más caro del fabricante Lenovo. (Sin utilizar INNER JOIN).
+SELECT * FROM Productos WHERE precio=( SELECT MAX(precio) FROM Productos 
+WHERE fabricantes_idCodigo = (SELECT idCodigo FROM fabricantes WHERE nombre="Lenovo"));
 
 
--- ---------------------------------------------------------------------------------------------
+-- 3. Lista el nombre del producto más caro del fabricante Lenovo.
+SELECT nombre, MAX(precio) AS Precio FROM Productos
+ WHERE fabricantes_idCodigo=(SELECT idCodigo FROM fabricantes WHERE nombre="Lenovo");
