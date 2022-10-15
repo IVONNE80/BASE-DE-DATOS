@@ -1,8 +1,9 @@
-/*-- TALLER: BASE DE DATOS
--- PRACTICA:7
--- NOMBRE:IVONNE HERNANDEZ BAUTISTA
--- FOLIO:15416TV14
--- FECHA:14/10/22
+/*
+TALLER: BASE DE DATOS
+PRACTICA:7
+NOMBRE:IVONNE HERNANDEZ BAUTISTA
+FOLIO:15416TV14
+FECHA:14/10/22
 */
 
 
@@ -125,7 +126,7 @@ Ordene el resultado descendentemente por el número deproductos.
 
 SELECT Fabricantes.nombre , count(Productos.idCodigo)
 FROM Fabricantes  left join Productos
-on  Productos.idCodigo = Fabricantes.idCodigo
+on  Productos.Fabricantes_idCodigo = Fabricantes.idCodigo
 group by Productos.Fabricantes_idCodigo
 order by 2 desc;
 /*
@@ -135,7 +136,7 @@ El resultado mostrará el nombre del fabricante junto con los datos que se solic
 
 SELECT Fabricantes.nombre , AVG(precio),MIN(precio),MAX(precio)
 FROM Fabricantes inner join Productos
-on Fabricantes.idCodigo = Productos.idCodigo
+on Fabricantes.idCodigo = Productos.Fabricantes_idCodigo
 group by Productos.Fabricantes_idCodigo;
 
 /*
@@ -146,7 +147,7 @@ Es necesario mostrar el nombre del fabricante.
 
 SELECT Fabricantes.nombre , count(Productos.idCodigo), AVG(precio),MIN(precio),MAX(precio)
 FROM Fabricantes left join Productos
-on Fabricantes.idCodigo = Productos.idCodigo
+on Fabricantes.idCodigo = Productos.Fabricantes_idCodigo
 where Productos.precio > 200
 group by Fabricantes.idCodigo;
 

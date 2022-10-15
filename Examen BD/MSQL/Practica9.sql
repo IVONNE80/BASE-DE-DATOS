@@ -3,7 +3,7 @@ TALLER: BASE DE DATOS
 PRACTICA:9
 NOMBRE:IVONNE HERNANDEZ BAUTISTA
 FOLIO:15416TV14
-FECHA:05/10/22
+FECHA:14/10/22
 */
 -- -----------------------------------------------------
 -- Schema mydb
